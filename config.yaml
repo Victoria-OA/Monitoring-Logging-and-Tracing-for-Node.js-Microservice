@@ -1,0 +1,10 @@
+collector:
+  zipkin:
+    host-port: 9411
+
+reporter:
+  logSpans: true
+
+sampler:
+  type: const
+  param: 1

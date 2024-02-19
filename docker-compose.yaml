@@ -1,0 +1,47 @@
+version: '3'
+services:
+  nodejs-app:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - localprom
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yaml
+    ports:
+      - "9090:9090"
+    networks:
+      - localprom
+
+  fluentd:
+    image: fluent/fluentd:v1.12
+    volumes:
+      - ./fluentd.conf:/fluentd/etc/fluentd.conf
+    networks:
+      - localprom
+
+  jaeger:
+    image: jaegertracing/all-in-one
+    ports:
+      - "16686:16686"
+    networks:
+      - localprom
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    ports:
+      - "9115:9115"
+    networks:
+      - localprom
+    command: ["--config.file=/etc/blackbox_exporter/config.yaml"]
+    volumes:
+      - ./blackbox_config.yaml:/etc/blackbox_exporter/config.yaml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Allow probing of host machine
+
+networks:
+  localprom:
+    driver: bridge
