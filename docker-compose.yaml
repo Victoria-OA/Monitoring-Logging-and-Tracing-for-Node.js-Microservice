@@ -21,6 +21,12 @@ services:
     ports:
       - "8080:8080"
     restart: always
+    depends_on:
+      - "prometheus"
+      - "grafana"
+      - "nodejs-app"
+      - "node_exporter"
+      
     networks:
       - localprom
 

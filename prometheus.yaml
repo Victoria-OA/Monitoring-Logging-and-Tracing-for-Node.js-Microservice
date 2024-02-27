@@ -9,15 +9,9 @@ scrape_configs:
     metrics_path: '/metrics'
     scheme: 'http'
 
-  - job_name: "cadvisor"
+  - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
-    #metrics_path: '/metrics'
-    scheme: 'http'
-
-  - job_name: 'nodejs-app'
-    static_configs:
-      - targets: ['nodejs-app:4000']
     metrics_path: '/metrics'
     scheme: 'http'
 
