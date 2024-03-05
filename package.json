@@ -4,7 +4,13 @@
     "description": "A simple Node.js Express application",
     "main": "index.js",
     "dependencies": {
+        "@opentelemetry/api": "^1.8.0",
+        "@opentelemetry/core": "^1.22.0",
+        "@opentelemetry/exporter-zipkin": "^1.22.0",
+        "@opentelemetry/node": "^0.24.0",
+        "@opentelemetry/tracing": "^0.24.0",
         "express": "^4.17.1",
+        "jaeger-client": "^3.19.0",
         "prom-client": "^15.1.0",
         "winston": "^3.3.3"
     }
