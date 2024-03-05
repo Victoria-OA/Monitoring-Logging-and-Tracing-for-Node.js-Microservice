@@ -68,8 +68,4 @@
     Loki configuration: ./local-config.yaml
     Promtail configuration: ./promtail-config.yaml
 
-Notes
-
-    Make sure to adjust configurations and settings as per your requirements.
-    For detailed instructions on each component, refer to their respective documentation.
 
